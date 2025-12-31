@@ -6,8 +6,7 @@
   "description": "Minimal plugin template: logs a Hello World message on load.",
   "version": "0.1.0",
   "default_enabled": false,
-  "backend": {
-    "exec": "hello-world-plugin.wasm",
-    "provides": [{ "id": "hello-world", "name": "Hello World Demo" }]
+  "module": {
+    "exec": "hello-world-plugin.wasm"
   }
 }

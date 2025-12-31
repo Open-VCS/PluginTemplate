@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-openvcs-core = { path = "../OpenVCS-Core", features = ["plugin-protocol"] }
+openvcs-core = { version = "0.1", features = ["plugin-protocol"] }
 
 [[bin]]
 name = "hello-world-plugin"
