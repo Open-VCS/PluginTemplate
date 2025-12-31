@@ -1,0 +1,11 @@
+[package]
+name = "openvcs-plugin-template"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+openvcs-core = { path = "../OpenVCS-Core", features = ["plugin-protocol"] }
+
+[[bin]]
+name = "hello-world-plugin"
+path = "src/main.rs"
