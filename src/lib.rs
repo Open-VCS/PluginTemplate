@@ -3,6 +3,7 @@
 //! A minimal plugin that demonstrates the plugin ABI structure.
 
 use openvcs_core::app_api::PluginError;
+use openvcs_core::info;
 use openvcs_core::openvcs_plugin;
 
 // Internal helpers - NOT ABI
@@ -17,6 +18,7 @@ mod plugin {
     use super::*;
 
     pub fn init() -> Result<(), PluginError> {
+        info!("Hello, World!");
         Ok(())
     }
 
