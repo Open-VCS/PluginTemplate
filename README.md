@@ -2,7 +2,7 @@
 
 This folder is a starter template for building OpenVCS plugins.
 
-It includes a single **WASI/Rust module** (`src/main.rs`) that prints a message when the plugin starts.
+It includes a single **WASI/Rust library** (`src/lib.rs`) that prints a message when the plugin starts.
 
 ## Build (`.ovcsp`)
 
@@ -31,14 +31,15 @@ Notes:
 ## Files
 
 - `openvcs.plugin.json`: Plugin manifest (id + module exec).
-- `Cargo.toml`, `src/main.rs`: Rust/WASI module executable.
+- `Cargo.toml`, `src/lib.rs`: Rust/WASI library.
+- `src/lib.rs` - Rust library with `#[openvcs_plugin]` and `export_plugin!` macros
 
 ## Customizing for your own plugin
 
 1. Pick a new plugin id (example: `com.yourname.my-plugin`).
 2. Update these in sync:
-  - `PluginTemplate/openvcs.plugin.json` (`id`, and any file names you change)
-  - `PluginTemplate/src/main.rs` (the startup message and any method names you add)
+   - `PluginTemplate/openvcs.plugin.json` (`id`, and any file names you change)
+   - `PluginTemplate/src/lib.rs` (the startup message and any method names you add)
 3. If you rename the module executable, update:
   - `PluginTemplate/openvcs.plugin.json` → `module.exec`
   - `PluginTemplate/Cargo.toml` → `[[bin]].name`
