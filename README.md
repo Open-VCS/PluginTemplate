@@ -17,7 +17,7 @@ This bundles the plugin into `dist/*.ovcsp`.
 If `cargo openvcs` is not installed, you can run the SDK packager directly:
 
 ```bash
-cargo run --manifest-path ../OpenVCS-SDK/Cargo.toml --bin openvcs-plugin -- --plugin-dir PluginTemplate --out PluginTemplate/dist
+cargo run --manifest-path ../SDK/Cargo.toml --bin openvcs-plugin -- --plugin-dir . --out dist
 ```
 
 Notes:
@@ -40,6 +40,4 @@ Notes:
 2. Update these in sync:
    - `PluginTemplate/openvcs.plugin.json` (`id`, and any file names you change)
    - `PluginTemplate/src/lib.rs` (the startup message and any method names you add)
-3. If you rename the module executable, update:
-  - `PluginTemplate/openvcs.plugin.json` → `module.exec`
-  - `PluginTemplate/Cargo.toml` → `[[bin]].name`
+3. If you rename the bundled module filename, update `PluginTemplate/openvcs.plugin.json` → `module.exec`.

@@ -17,7 +17,7 @@ It demonstrates:
 
 - `openvcs.plugin.json`: plugin manifest baseline.
 - `Cargo.toml`: crate and binary configuration.
-- `src/main.rs`: starter module logic.
+- `src/lib.rs`: starter module logic.
 - `dist/`: output location for packaged bundles.
 
 ## Boundaries
