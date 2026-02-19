@@ -2,12 +2,11 @@
 //!
 //! A minimal plugin that demonstrates the plugin ABI structure.
 
-use openvcs_core::app_api::PluginError;
-use openvcs_core::info;
-use openvcs_core::openvcs_plugin;
+use openvcs_core::prelude::*;
 
 // Internal helpers - NOT ABI
 #[allow(dead_code)]
+/// Returns a sample helper string used by the template.
 fn helper() -> String {
     "Hello from internal helper!".to_string()
 }
@@ -17,11 +16,19 @@ fn helper() -> String {
 mod plugin {
     use super::*;
 
+    /// Initializes the template plugin.
+    ///
+    /// # Returns
+    /// - `Ok(())` when plugin startup succeeds.
     pub fn init() -> Result<(), PluginError> {
         info!("Hello, World!");
         Ok(())
     }
 
+    /// Deinitializes the template plugin.
+    ///
+    /// # Returns
+    /// - `Ok(())` when plugin shutdown succeeds.
     pub fn deinit() -> Result<(), PluginError> {
         Ok(())
     }

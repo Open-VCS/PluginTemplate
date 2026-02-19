@@ -3,6 +3,7 @@
 This folder is a starter template for building OpenVCS plugins.
 
 It includes a single **WASI/Rust library** (`src/lib.rs`) that prints a message when the plugin starts.
+The template uses `use openvcs_core::prelude::*;` so plugin code can stay concise.
 
 ## Build (`.ovcsp`)
 
@@ -17,7 +18,13 @@ This bundles the plugin into `dist/*.ovcsp`.
 If `cargo openvcs` is not installed, you can run the SDK packager directly:
 
 ```bash
-cargo run --manifest-path ../SDK/Cargo.toml --bin openvcs-plugin -- --plugin-dir . --out dist
+cargo run --manifest-path ../SDK/Cargo.toml --bin cargo-openvcs -- dist --plugin-dir . --out dist
+```
+
+Preferred install path:
+
+```bash
+cargo install openvcs-sdk
 ```
 
 Notes:
@@ -32,7 +39,7 @@ Notes:
 
 - `openvcs.plugin.json`: Plugin manifest (id + module exec).
 - `Cargo.toml`, `src/lib.rs`: Rust/WASI library.
-- `src/lib.rs` - Rust library with `#[openvcs_plugin]` and `export_plugin!` macros
+- `src/lib.rs` - Rust library using `openvcs_core::prelude::*` plus `#[openvcs_plugin]` and `export_plugin!`
 
 ## Customizing for your own plugin
 
