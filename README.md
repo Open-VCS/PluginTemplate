@@ -10,21 +10,21 @@ The template uses `use openvcs_core::prelude::*;` so plugin code can stay concis
 From `PluginTemplate/`, run:
 
 ```bash
-cargo openvcs dist
+npx --package @openvcs/sdk openvcs dist --plugin-dir . --out dist
 ```
 
 This bundles the plugin into `dist/*.ovcsp`.
 
-If `cargo openvcs` is not installed, you can run the SDK packager directly:
+Preferred install path for repeated use:
 
 ```bash
-cargo run --manifest-path ../SDK/Cargo.toml --bin cargo-openvcs -- dist --plugin-dir . --out dist
+npm install --save-dev @openvcs/sdk
 ```
 
-Preferred install path:
+Then run:
 
 ```bash
-cargo install openvcs-sdk
+npx openvcs dist --plugin-dir . --out dist
 ```
 
 Notes:
