@@ -11,11 +11,11 @@ See umbrella context in `../ARCHITECTURE.md`.
 It demonstrates:
 - manifest layout,
 - module entrypoint layout,
-- packaging path to `.ovcsp`.
+- npm package path for config-based plugin resolution.
 
 ## Code Map
 
-- `openvcs.plugin.json`: plugin manifest baseline.
+- `package.json`: npm manifest with `openvcs` plugin metadata.
 - `Cargo.toml`: crate and binary configuration.
 - `src/lib.rs`: starter module logic.
 - `dist/`: output location for packaged bundles.
