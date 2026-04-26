@@ -1,50 +1,36 @@
 # PluginTemplate: Hello, World!
 
-This folder is a starter template for building OpenVCS plugins.
+This folder is a starter template for building OpenVCS plugins with the same SDK/runtime architecture used by the Git plugin.
 
-It includes a single **WASI/Rust library** (`src/lib.rs`) that prints a message when the plugin starts.
-The template uses `use openvcs_core::prelude::*;` so plugin code can stay concise.
+It keeps the behavior simple: when the plugin starts, it logs one line:
+
+- `Hello, World from PluginTemplate!`
 
 ## Build
 
 From `PluginTemplate/`, run:
 
 ```bash
-npx --package @openvcs/sdk openvcs build --plugin-dir .
+npm install
+npm run build
 ```
 
-This builds the plugin runtime assets in place.
-
-Preferred install path for repeated use:
+## Validate
 
 ```bash
-npm install --save-dev @openvcs/sdk
+npm run lint
+npm test
 ```
 
-Then run:
+## What it contains
 
-```bash
-npx openvcs build --plugin-dir .
-```
+- `package.json`: OpenVCS plugin manifest and npm scripts.
+- `tsconfig.json`: TypeScript build settings for the plugin runtime.
+- `src/plugin.ts`: plugin definition and startup hook.
+- `test/plugin.test.ts`: basic smoke tests for the exported plugin contract.
 
-Notes:
-- These plugins build for `wasm32-wasip1`. If needed: `rustup target add wasm32-wasip1`.
+## Customizing
 
-## What it does
-
-- When enabled/loaded, it logs one line:
-  - `Hello, World from PluginTemplate!`
-
-## Files
-
-- `package.json`: npm manifest with `openvcs` plugin metadata.
-- `Cargo.toml`, `src/lib.rs`: Rust/WASI library.
-- `src/lib.rs` - Rust library using `openvcs_core::prelude::*` plus `#[openvcs_plugin]` and `export_plugin!`
-
-## Customizing for your own plugin
-
-1. Pick a new plugin id (example: `com.yourname.my-plugin`).
-2. Update these in sync:
-   - `PluginTemplate/package.json` (`openvcs.id`, and any file names you change)
-   - `PluginTemplate/src/lib.rs` (the startup message and any method names you add)
-3. If you rename the bundled module filename, update `PluginTemplate/package.json` → `openvcs.module.exec`.
+1. Change the `openvcs.id` in `package.json`.
+2. Update the startup log line in `src/plugin.ts`.
+3. Add more plugin behavior using the same `PluginDefinition` / `OnPluginStart()` entrypoint pattern.
