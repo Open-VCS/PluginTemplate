@@ -1,0 +1,52 @@
+{
+  "name": "@openvcs/plugin-template",
+  "version": "0.1.0",
+  "description": "OpenVCS plugin template using the Node.js SDK runtime",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/Open-VCS/PluginTemplate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Open-VCS/PluginTemplate"
+  },
+  "bugs": {
+    "url": "https://github.com/Open-VCS/PluginTemplate/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "openvcs": {
+    "id": "template.hello-world",
+    "name": "Template: Hello World",
+    "version": "0.1.0",
+    "author": "OpenVCS Contributors",
+    "description": "Minimal plugin template: logs a Hello World message on load.",
+    "default_enabled": false,
+    "module": {
+      "exec": "openvcs-template-plugin.js"
+    }
+  },
+  "scripts": {
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "tsx --test test/*.test.ts",
+    "prepack": "npm run build",
+    "build:plugin": "tsc -p tsconfig.json",
+    "build": "node ./node_modules/@openvcs/sdk/bin/openvcs.js build"
+  },
+  "dependencies": {
+    "@openvcs/sdk": "edge"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsx": "^4.20.6",
+    "typescript": "^6.0.2"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "tsconfig.json",
+    "README.md",
+    "ARCHITECTURE.md",
+    "LICENSE"
+  ]
+}

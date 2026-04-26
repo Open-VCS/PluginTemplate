@@ -1,44 +1,36 @@
 # PluginTemplate: Hello, World!
 
-This folder is a starter template for building OpenVCS plugins.
+This folder is a starter template for building OpenVCS plugins with the same SDK/runtime architecture used by the Git plugin.
 
-It includes a single **WASI/Rust module** (`src/main.rs`) that prints a message when the plugin starts.
+It keeps the behavior simple: when the plugin starts, it logs one line:
 
-## Build (`.ovcsp`)
+- `Hello, World from PluginTemplate!`
+
+## Build
 
 From `PluginTemplate/`, run:
 
 ```bash
-cargo openvcs dist
+npm install
+npm run build
 ```
 
-This bundles the plugin into `dist/*.ovcsp`.
-
-If `cargo openvcs` is not installed, you can run the SDK packager directly:
+## Validate
 
 ```bash
-cargo run --manifest-path ../OpenVCS-SDK/Cargo.toml --bin openvcs-plugin -- --plugin-dir PluginTemplate --out PluginTemplate/dist
+npm run lint
+npm test
 ```
 
-Notes:
-- These plugins build for `wasm32-wasip1`. If needed: `rustup target add wasm32-wasip1`.
+## What it contains
 
-## What it does
+- `package.json`: OpenVCS plugin manifest and npm scripts.
+- `tsconfig.json`: TypeScript build settings for the plugin runtime.
+- `src/plugin.ts`: plugin definition and startup hook.
+- `test/plugin.test.ts`: basic smoke tests for the exported plugin contract.
 
-- When enabled/loaded, it logs one line:
-  - `Hello, World from PluginTemplate!`
+## Customizing
 
-## Files
-
-- `openvcs.plugin.json`: Plugin manifest (id + module exec).
-- `Cargo.toml`, `src/main.rs`: Rust/WASI module executable.
-
-## Customizing for your own plugin
-
-1. Pick a new plugin id (example: `com.yourname.my-plugin`).
-2. Update these in sync:
-  - `PluginTemplate/openvcs.plugin.json` (`id`, and any file names you change)
-  - `PluginTemplate/src/main.rs` (the startup message and any method names you add)
-3. If you rename the module executable, update:
-  - `PluginTemplate/openvcs.plugin.json` → `module.exec`
-  - `PluginTemplate/Cargo.toml` → `[[bin]].name`
+1. Change the `openvcs.id` in `package.json`.
+2. Update the startup log line in `src/plugin.ts`.
+3. Add more plugin behavior using the same `PluginDefinition` / `OnPluginStart()` entrypoint pattern.
