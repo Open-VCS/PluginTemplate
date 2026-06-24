@@ -1,7 +1,8 @@
 {
   "name": "@openvcs/plugin-template",
   "version": "0.1.0",
-  "description": "OpenVCS plugin template using the Node.js SDK runtime",
+  "description": "Minimal plugin template that logs a Hello World message on load.",
+  "author": "OpenVCS Contributors",
   "license": "GPL-3.0-or-later",
   "homepage": "https://github.com/Open-VCS/PluginTemplate",
   "repository": {
@@ -18,9 +19,6 @@
   "openvcs": {
     "id": "template.hello-world",
     "name": "Template: Hello World",
-    "version": "0.1.0",
-    "author": "OpenVCS Contributors",
-    "description": "Minimal plugin template: logs a Hello World message on load.",
     "default_enabled": false,
     "module": {
       "exec": "openvcs-template-plugin.js"
